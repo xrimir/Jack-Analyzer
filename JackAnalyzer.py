@@ -15,7 +15,8 @@ class JackAnalyzer:
         while tokenizer.has_more_tokens():
             tokenizer.advance()
             tokenizer.load_next_token()
-        tokenizer.result.append('tokens')
+        print(tokenizer.result)
+        tokenizer.result.append('</tokens>')
         tokenizer.jack_file.close()
 
 
