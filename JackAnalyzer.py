@@ -10,14 +10,13 @@ class JackAnalyzer:
 
     def analyze_file(self):
         tokenizer = JackTokenizer(filename)
-        comp_engine = CompilationEngine()
         tokenizer.init_file()
         while tokenizer.has_more_tokens():
             tokenizer.advance()
             tokenizer.load_next_token()
-        print(tokenizer.result)
-        tokenizer.result.append('</tokens>')
         tokenizer.jack_file.close()
+        comp_engine = CompilationEngine(self.output_filename, tokenizer.result)
+        comp_engine.compile_all()
 
 
 filename = sys.argv[-1]
